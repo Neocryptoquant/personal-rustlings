@@ -18,16 +18,18 @@
 // - The output element is going to be a vector of strings.
 
 enum Command {
-    Uppercase,
-    Trim,
-    Append(usize),
+    Uppercase = 1,
+    Trim = 2,
+    Append(usize) = 3,
 }
 
 mod my_module {
     use super::Command;
 
     // TODO: Complete the function as described above.
-    // pub fn transformer(input: ???) -> ??? { ??? }
+    pub fn transformer(input: vec![String, Command]) -> vec![String, Command] { 
+        if 2
+     }
 }
 
 fn main() {

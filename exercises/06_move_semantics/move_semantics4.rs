@@ -10,9 +10,15 @@ mod tests {
     fn move_semantics4() {
         let mut x = Vec::new();
         let y = &mut x;
-        let z = &mut x;
         y.push(42);
+
+        let z = &mut x;
         z.push(13);
         assert_eq!(x, [42, 13]);
     }
 }
+
+// After borrowing once, you must fill in the use of the borrow
+// before you can borrow again. Here, we first borrow `x`
+// as `y` and use it to push `42`. Only after that can we
+// borrow `x` again as `z` to push `13`.
