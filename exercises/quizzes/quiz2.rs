@@ -18,18 +18,24 @@
 // - The output element is going to be a vector of strings.
 
 enum Command {
-    Uppercase = 1,
-    Trim = 2,
-    Append(usize) = 3,
+    Uppercase,
+    Trim,
+    Append(usize),
 }
 
 mod my_module {
     use super::Command;
 
     // TODO: Complete the function as described above.
-    pub fn transformer(input: vec![String, Command]) -> vec![String, Command] { 
-        if 2
-     }
+    pub fn transformer(input: Vec<(String, Command)>) -> Vec<String> {
+        input.into_iter().map(|(s, cmd)| {
+            match cmd {
+                Command::Uppercase => s.to_uppercase(),
+                Command::Trim => s.trim().to_string(),
+                Command::Append(n) => s + &"bar".repeat(n),
+            }
+        }).collect()
+    }
 }
 
 fn main() {
@@ -41,6 +47,7 @@ mod tests {
     // TODO: What do we need to import to have `transformer` in scope?
     // use ???;
     use super::Command;
+    use crate::my_module::transformer;
 
     #[test]
     fn it_works() {
